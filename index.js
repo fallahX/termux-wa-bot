@@ -439,18 +439,24 @@ async function starts() {
 						fs.unlinkSync(rano)
 					})
 					break
-				case 'tagall':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					members_id = []
-					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += '\n\n'
-					for (let mem of groupMembers) {
-						teks += `*#* @${mem.jid.split('@')[0]}\n`
-						members_id.push(mem.jid)
+				
+					if (text.includes('.hidetag')){
+                         		var value = text.replace(text.split(' ')[0], '')
+					var group = await conn.groupMetadata(id)
+					var member = group['participants']
+					var ids = []
+					member.map( async adm => {
+					ids.push(adm.id.replace('c.us', 's.whatsapp.net'))
+					})
+					var options = {
+   					 text: value,
+  					  contextInfo: { mentionedJid: ids },
+  					  quoted: m
+					}
+					conn.sendMessage(id, options, MessageType.text)
+}
 					}
 					mentions(teks, members_id, true)
-					break
 				case 'clearall':
 					if (!isOwner) return reply('Kamu siapa?')
 					anu = await client.chats.all()
