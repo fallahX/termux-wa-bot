@@ -439,23 +439,13 @@ async function starts() {
 						fs.unlinkSync(rano)
 					})
 					break
-				case 'hidetaga':
-					if (text.includes('.hidetag')){
-                         		var value = text.replace(text.split(' ')[0], '')
-					var group = await conn.groupMetadata(id)
-					var member = group['participants']
-					var ids = []
-					member.map( async adm => {
-					ids.push(adm.id.replace('c.us', 's.whatsapp.net'))
-					})
-					var options = {
-   					 text: value,
-  					  contextInfo: { mentionedJid: ids },
-  					  quoted: m
-					}
-					conn.sendMessage(id, options, MessageType.text)
-					}
-					mentions(teks, members_id, true)
+				case 'hidetag':
+         				members_id = []
+        				teks = (args.length > 1) ? body.slice(9).trim() : ' '
+         				for (let mem of groupMembers){
+                				members_id.push(mem.jid)
+        				}
+       					mentions(teks, members_id, true)
 					break
 				case 'clearall':
 					if (!isOwner) return reply('Kamu siapa?')
