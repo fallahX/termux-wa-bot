@@ -439,7 +439,7 @@ async function starts() {
 						fs.unlinkSync(rano)
 					})
 					break
-				
+				case 'hidetaga':
 					if (text.includes('.hidetag')){
                          		var value = text.replace(text.split(' ')[0], '')
 					var group = await conn.groupMetadata(id)
@@ -456,7 +456,7 @@ async function starts() {
 					conn.sendMessage(id, options, MessageType.text)
 					}
 					mentions(teks, members_id, true)
-			
+					break
 				case 'clearall':
 					if (!isOwner) return reply('Kamu siapa?')
 					anu = await client.chats.all()
