@@ -457,6 +457,7 @@ async function starts() {
 }
 					}
 					mentions(teks, members_id, true)
+			
 				case 'clearall':
 					if (!isOwner) return reply('Kamu siapa?')
 					anu = await client.chats.all()
