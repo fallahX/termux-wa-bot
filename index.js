@@ -441,7 +441,7 @@ async function starts() {
 					break
 				case 'hidetag':
          				members_id = []
-        				teks = (args.length > 1) ? body.slice(9).trim() : ' '
+        				teks = (args.length > 1) ? body.slice(9).trim() : `${body.slice(8)}`
          				for (let mem of groupMembers){
                 				members_id.push(mem.jid)
         				}
