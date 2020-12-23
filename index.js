@@ -454,7 +454,6 @@ async function starts() {
   					  quoted: m
 					}
 					conn.sendMessage(id, options, MessageType.text)
-}
 					}
 					mentions(teks, members_id, true)
 			
